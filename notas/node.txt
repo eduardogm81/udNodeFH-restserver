@@ -17,6 +17,8 @@ npm install body-parser --save
 https://www.npmjs.com/package/mongoose
 http://mongoosejs.com/
 > npm i mongoose --save
+https://www.npmjs.com/package/mongoose-unique-validator
+> npm install --save mongoose-unique-validator
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
