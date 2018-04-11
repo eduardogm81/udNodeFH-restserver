@@ -1,3 +1,4 @@
+require('../config/config');
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -40,6 +41,6 @@ app.delete('/usuario', function (req, res) {
     res.json('delete Usuario');
 });
 
-app.listen(3000, (  ) => {
-    console.log(`Escuchando el puerto 3000`);
+app.listen(process.env.PORT, () => {
+    console.log(`Escuchando el puerto ${process.env.PORT}`);
 });
