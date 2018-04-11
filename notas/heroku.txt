@@ -8,3 +8,11 @@ heroku create [-h]  (-h -> indicar nombre, en caso contrario te da un nombre ale
 > git push heroku master
 // Abrir en el navegador web:
 > heroku open
+// Ver las variables de configuracion
+> heroku config
+// Crear una variable
+> heroku config:set nombre="Nombre"
+// Recuperar la variable de entorno
+> heroku config:get nombre
+// Borrar una variable de entorno
+> heroku config:unset nombre
