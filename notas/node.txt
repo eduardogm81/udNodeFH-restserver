@@ -26,6 +26,11 @@ https://www.npmjs.com/package/mongoose-unique-validator
 https://www.npmjs.com/package/bcrypt
 npm install bcrypt@1.0.3 --save   // Nota: Bcrypt 2.0.0 da error al instalar
 -----------------------------------------------------------------------------
+// =============================
+// Underscore
+// =============================
+http://underscorejs.org/
+npm install underscore --save
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
 Otros:
