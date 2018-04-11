@@ -1,0 +1,10 @@
+// =============================
+// Heroku
+// =============================
+// Crear proyecto en Heroku
+heroku create [-h]  (-h -> indicar nombre, en caso contrario te da un nombre aleatorio)
+// Desplegar en heroku:
+- Mirar que este en la última versión (commits) y escribir:
+> git push heroku master
+// Abrir en el navegador web:
+> heroku open
