@@ -16,6 +16,11 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 process.env.CADUCIDAD_TOKEN = '30 days';
 
 process.env.SEED = process.env.SEED || 'este-es-el-seed-desarrollo';
+// =============================
+// Google Client ID
+// =============================
+process.env.CLIENT_ID = process.env.CLIENT_ID || '233868808613-9i859pfds2c4m179c6d4suj1l9sm3q32.apps.googleusercontent.com';
+
 
 // =============================
 // Base de datos
