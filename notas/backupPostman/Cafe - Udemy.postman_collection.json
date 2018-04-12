@@ -13,6 +13,10 @@
 					{
 						"key": "Content-Type",
 						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "token",
+						"value": "{{token}}"
 					}
 				],
 				"body": {
@@ -20,13 +24,13 @@
 					"urlencoded": [
 						{
 							"key": "nombre",
-							"value": "Test1",
+							"value": "Test17",
 							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "email",
-							"value": "test1@test.com",
+							"value": "test17@test.com",
 							"description": "",
 							"type": "text"
 						},
@@ -67,6 +71,10 @@
 					{
 						"key": "Content-Type",
 						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "token",
+						"value": "{{token}}"
 					}
 				],
 				"body": {
@@ -74,7 +82,7 @@
 					"urlencoded": [
 						{
 							"key": "nombre",
-							"value": "Test2 updated2",
+							"value": "Test2 updated",
 							"description": "",
 							"type": "text"
 						},
@@ -89,13 +97,15 @@
 							"key": "password",
 							"value": "123",
 							"description": "",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "role",
 							"value": "ADMIN_ROLE",
 							"description": "",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "google",
@@ -107,13 +117,13 @@
 					]
 				},
 				"url": {
-					"raw": "{{url}}/usuario/5acddd789b2f051e3c57443d",
+					"raw": "{{url}}/usuario/5ace0b752be88000149d5a06",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"usuario",
-						"5acddd789b2f051e3c57443d"
+						"5ace0b752be88000149d5a06"
 					]
 				},
 				"description": "Actualiza usuario menos password y google"
@@ -124,10 +134,15 @@
 			"name": "Usuario: Get usuarios",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}"
+					}
+				],
 				"body": {},
 				"url": {
-					"raw": "{{url}}/usuario/?limite=10&desde=10",
+					"raw": "{{url}}/usuario/?limite=10&desde=0",
 					"host": [
 						"{{url}}"
 					],
@@ -142,7 +157,7 @@
 						},
 						{
 							"key": "desde",
-							"value": "10"
+							"value": "0"
 						}
 					]
 				},
@@ -154,19 +169,132 @@
 			"name": "Usuario: Borrar usuario",
 			"request": {
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}"
+					}
+				],
 				"body": {},
 				"url": {
-					"raw": "{{url}}/usuario/5acdedead27ed81dccdd0d64",
+					"raw": "{{url}}/usuario/5acf15bcb430b4114451289d",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"usuario",
-						"5acdedead27ed81dccdd0d64"
+						"5acf15bcb430b4114451289d"
 					]
 				},
 				"description": "Borramos un usuario de base de datos"
+			},
+			"response": []
+		},
+		{
+			"name": "Login: normal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2470d3cd-aaa0-4917-ac30-8d7f4f79c850",
+						"type": "text/javascript",
+						"exec": [
+							"let resp = pm.response.json();",
+							"",
+							"if (resp.ok) {",
+							"    let token = resp.token;",
+							"    pm.environment.set(\"token\", token);",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "test1@test.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
+					]
+				},
+				"description": "Login normal"
+			},
+			"response": []
+		},
+		{
+			"name": "Login: Google",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fe6f9543-b81f-472a-bf07-c20c6b68c2dc",
+						"type": "text/javascript",
+						"exec": [
+							"let resp = pm.response.json();",
+							"",
+							"if (resp.ok) {",
+							"    let token = resp.token;",
+							"    pm.environment.set(\"token\", token);",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "idtoken",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjNiNTQ3ODg2ZmY4NWEzNDI4ZGY0ZjYxZGI3M2MxYzIzOTgyYTkyOGUifQ.eyJhenAiOiIyMzM4Njg4MDg2MTMtOWk4NTlwZmRzMmM0bTE3OWM2ZDRzdWoxbDlzbTNxMzIuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiIyMzM4Njg4MDg2MTMtOWk4NTlwZmRzMmM0bTE3OWM2ZDRzdWoxbDlzbTNxMzIuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDI5NTAwMDg5NTkzNDcxMjM2MzYiLCJlbWFpbCI6ImVkdWFyZG9nbXFnQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiSGFPT0RvaGJtdk9iUmRYX1p3SDJ2QSIsImV4cCI6MTUyMzU0NDYxNywiaXNzIjoiYWNjb3VudHMuZ29vZ2xlLmNvbSIsImp0aSI6ImViM2YxM2RmNjYxNDg1NmIwNTAyODU0MzEzM2M2ZGRlMWJjNWE5NDkiLCJpYXQiOjE1MjM1NDEwMTcsIm5hbWUiOiJFZHVhcmRvIFF1YXJrR2x1b24iLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDUuZ29vZ2xldXNlcmNvbnRlbnQuY29tLy1mUGxod0pDcUVFMC9BQUFBQUFBQUFBSS9BQUFBQUFBQUFBQS9BQ0xHeVdDTVNhZ2JSZm5reUFaSG52V2FfUVNMYzFQZXhRL3M5Ni1jL3Bob3RvLmpwZyIsImdpdmVuX25hbWUiOiJFZHVhcmRvIiwiZmFtaWx5X25hbWUiOiJRdWFya0dsdW9uIiwibG9jYWxlIjoiZXMifQ.khETRf5oxCEHMPQt5A5ZCQsI4aOweZjCpR-yWIUTbudJ0egCJXctESPDwDwaQgj5-d6qBz-Xjcdb2kqySXc7E3m1eSLxyflGjNhN9vJ63T6Vg00D_snmb0mC5WznCDBDl9JDO1q8l4Re-GXq6Ajj1j1YpPmRmiFBHScThHjqQZyVqwC6iht1wm_WVdOQ9VJARSOh2FZSIAvWONb-ih0WsiTcPG7SrqglhCLgiJW2djCteTEQbjKWxhsOJi8QRDsUVwkGBlm2w2uzJtcaNkHj84PW5GGxPy7VHQ5Q276iGsxIyY__eHpA8NXHrjn7EbK8obfuBCiEIN4-q1CAUfhR-g\n",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/google",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"google"
+					]
+				},
+				"description": "Autenticación por google"
 			},
 			"response": []
 		}
