@@ -10,6 +10,10 @@ const app = express();
 
 app.get('/usuario', verificaToken, (req, res) => {
 
+    /*return res.json({
+        usuario: req.usuario
+    });*/
+
     let desde = req.query.desde || 0;
     desde = Number(desde);
     let limite = req.query.limite || 5;
@@ -38,7 +42,7 @@ app.get('/usuario', verificaToken, (req, res) => {
 
 });
 
-app.post('/usuario', function (req, res) {
+app.post('/usuario', verificaToken, function (req, res) {
 
     let body = req.body;
 
@@ -67,7 +71,7 @@ app.post('/usuario', function (req, res) {
 
 });
 
-app.put('/usuario/:id', function (req, res) {
+app.put('/usuario/:id', verificaToken, function (req, res) {
     let id = req.params.id;
     let body = _.pick(req.body, ['nombre','email','img','role','estado']);
 
@@ -76,6 +80,15 @@ app.put('/usuario/:id', function (req, res) {
             return res.status(400).json({
                 ok: false,
                 err
+            });
+        }
+
+        if (!usuarioDB) {
+            return res.status(400).json({
+                ok: false,
+                err : {
+                    message: 'Usuario no encontrado'
+                }
             });
         }
 
@@ -89,7 +102,7 @@ app.put('/usuario/:id', function (req, res) {
 
 });
 
-app.delete('/usuario/:id', function (req, res) {
+app.delete('/usuario/:id', verificaToken, function (req, res) {
 
     let id = req.params.id;
 
