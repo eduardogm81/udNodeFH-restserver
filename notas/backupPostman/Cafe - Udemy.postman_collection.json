@@ -1,0 +1,174 @@
+{
+	"info": {
+		"_postman_id": "2e79b594-57a4-4b88-a43b-b2e033709380",
+		"name": "Cafe - Udemy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuario: Crear usuario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "Test1",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "test1@test.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "ADMIN_ROLE",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/usuario/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"usuario",
+						""
+					]
+				},
+				"description": "Creamos un usuario de BD"
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario: Actualizar usuario",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "Test2 updated2",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "test2@test.com",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "ADMIN_ROLE",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "google",
+							"value": "true",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/usuario/5acddd789b2f051e3c57443d",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"usuario",
+						"5acddd789b2f051e3c57443d"
+					]
+				},
+				"description": "Actualiza usuario menos password y google"
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario: Get usuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/usuario/?limite=10&desde=10",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"usuario",
+						""
+					],
+					"query": [
+						{
+							"key": "limite",
+							"value": "10"
+						},
+						{
+							"key": "desde",
+							"value": "10"
+						}
+					]
+				},
+				"description": "Obtenemos todos los usuarios por página."
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario: Borrar usuario",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/usuario/5acdedead27ed81dccdd0d64",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"usuario",
+						"5acdedead27ed81dccdd0d64"
+					]
+				},
+				"description": "Borramos un usuario de base de datos"
+			},
+			"response": []
+		}
+	]
+}

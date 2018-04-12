@@ -41,6 +41,13 @@ npm install jsonwebtoken --save
 // Sacar el JWT
 https://gist.github.com/Klerith/44ee5349fa13699d9c5f1e82b3be040e
 -----------------------------------------------------------------------------
+// =============================
+// Google Sign In
+// =============================
+https://developers.google.com/identity/sign-in/web/sign-in
+// Console:
+https://console.developers.google.com/
+-----------------------------------------------------------------------------
 Otros:
 draw.io -> Crear diagramas
 -----------------------------------------------------------------------------
