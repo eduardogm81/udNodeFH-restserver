@@ -32,6 +32,10 @@ npm install bcrypt@1.0.3 --save   // Nota: Bcrypt 2.0.0 da error al instalar
 http://underscorejs.org/
 npm install underscore --save
 -----------------------------------------------------------------------------
+// =============================
+// JWT (JSON Web Tokens)
+// =============================
+https://gist.github.com/Klerith/44ee5349fa13699d9c5f1e82b3be040e
 -----------------------------------------------------------------------------
 Otros:
 draw.io -> Crear diagramas
